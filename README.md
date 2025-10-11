@@ -90,3 +90,57 @@ s
 
 ---
 
+## 🧩 **Level 2: Methods, Parameters, Arrays & Strings**
+
+### ✅ **Program 6: Sum and Average Calculator (Using Methods & Arrays)**
+
+**Topics:** Methods, Parameters, Arrays, Loops, Return Values
+
+**Instructions:**
+
+1. Ask the user how many numbers they want to enter.
+2. Store the numbers in an array.
+3. Write a method `CalculateSum(int[] numbers)` that returns the sum.
+4. Write another method `CalculateAverage(int[] numbers)` that returns the average.
+5. Display both results.
+
+📝 **Bonus:** Add a method to find the **maximum and minimum** numbers.
+
+**Core Learning:** Passing arrays to methods and returning computed values.
+
+---
+
+### ✅ **Program 7: Palindrome Checker (String Manipulation & Methods)**
+
+**Topics:** Strings, Loops, Methods, Conditionals
+
+**Instructions:**
+
+1. Ask the user to enter a word or phrase.
+2. Create a method `IsPalindrome(string input)` that:
+
+   * Removes spaces and converts to lowercase.
+   * Checks if the string reads the same backward.
+3. Return `true` or `false` and display the result.
+
+📝 **Bonus:** Allow user to test multiple strings until they type “exit”.
+
+**Core Learning:** String processing, clean comparisons, logical reasoning.
+
+---
+
+### ✅ **Program 8: Word Counter (String Split & Loops)**
+
+**Topics:** Strings, Arrays, Loops, Methods
+
+**Instructions:**
+
+1. Ask the user to input a sentence.
+2. Create a method `CountWords(string sentence)` that splits the string using spaces and counts the number of words.
+3. Display the total word count.
+
+📝 **Bonus:** Count **unique words** (hint: use `ToLower()` and basic array comparisons).
+
+**Core Learning:** Working with `string.Split()`, array traversal, and basic text analysis.
+
+---
