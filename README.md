@@ -144,3 +144,51 @@ s
 **Core Learning:** Working with `string.Split()`, array traversal, and basic text analysis.
 
 ---
+
+### ✅ **Program 9: Simple Menu System (Methods + Control Structures)**
+
+**Topics:** Methods, Switch Statements, Loops, Parameters
+
+**Instructions:**
+
+1. Display a menu like:
+
+   ```
+   1. Add
+   2. Subtract
+   3. Multiply
+   4. Divide
+   5. Exit
+   ```
+2. For each option, call a corresponding method:
+   `Add(a, b)`, `Subtract(a, b)`, etc.
+3. Continue showing the menu until the user chooses “Exit”.
+
+📝 **Bonus:** Add input validation (e.g., handle divide by zero, non-numeric input).
+
+**Core Learning:** Modular program design using multiple small reusable methods.
+
+---
+
+### ✅ **Program 10: Student Grades Summary (Arrays + Methods Integration)**
+
+**Topics:** Arrays, Methods, Loops, Basic Logic
+
+**Instructions:**
+
+1. Ask how many students there are.
+2. For each student, enter their marks.
+3. Store all marks in an array.
+4. Write methods:
+
+   * `GetHighest(int[] marks)`
+   * `GetLowest(int[] marks)`
+   * `GetAverage(int[] marks)`
+5. Display the overall class summary.
+
+📝 **Bonus:**
+Add a method to **assign grades** (A/B/C/D/F) based on the average score.
+
+**Core Learning:** Combining arrays, methods, loops, and conditionals into one cohesive problem.
+
+---
