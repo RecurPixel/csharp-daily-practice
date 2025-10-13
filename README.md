@@ -192,3 +192,80 @@ Add a method to **assign grades** (A/B/C/D/F) based on the average score.
 **Core Learning:** Combining arrays, methods, loops, and conditionals into one cohesive problem.
 
 ---
+
+## ⚙️ **C# OOP Practice — Set 1 (Core OOP Foundations)**
+
+### 🧱 Concepts Covered
+
+Classes • Objects • Constructors • Destructors • Properties • Access Modifiers • Encapsulation
+
+---
+
+### ✅ **Program 11: Basic Class & Object**
+
+**Topics:** Class, Object, Fields, Methods
+**Instructions:**
+
+* Create a `Car` class with fields: `brand`, `model`, and `year`.
+* Add a method `DisplayInfo()` to print details.
+* Create objects in `Main()` and display them.
+
+📝 *Bonus:* Add a method to update the year and reprint details.
+
+---
+
+### ✅ **Program 12: Constructors and Destructors**
+
+**Topics:** Constructors, Destructors, Initialization
+**Instructions:**
+
+* Modify the `Car` class:
+
+  * Add a **default** and a **parameterized** constructor.
+  * Print a message inside the destructor to show object cleanup.
+* Create multiple car objects using both constructors.
+
+📝 *Bonus:* Add an initialization message in the constructor.
+
+---
+
+### ✅ **Program 13: Encapsulation & Properties**
+
+**Topics:** Private Fields, Getters/Setters, Properties
+**Instructions:**
+
+* Create a `BankAccount` class with fields: `accountNumber`, `balance`.
+* Make fields **private** and expose **public properties** with validation (e.g., balance can’t be negative).
+* Add methods `Deposit()` and `Withdraw()`.
+
+📝 *Bonus:* Reject invalid withdrawal attempts (e.g., withdrawing more than the balance).
+
+---
+
+### ✅ **Program 14: Access Modifiers**
+
+**Topics:** `public`, `private`, `protected`, `internal`
+**Instructions:**
+
+* Create a class `Person` with different members using various access modifiers.
+* Try to access them from another class to observe visibility differences.
+
+📝 *Bonus:* Demonstrate how `protected` works via inheritance (preview for next set).
+
+---
+
+### ✅ **Program 15: Real-World Encapsulation Example**
+
+**Topics:** Combining Constructors, Properties, Validation
+**Instructions:**
+
+* Create an `Employee` class with properties: `Name`, `Age`, `Salary`.
+* Validate inside setters:
+
+  * `Age` must be > 18
+  * `Salary` > 0
+* Use a constructor for initialization and display details via a method.
+
+📝 *Bonus:* Add a static field to count total employees created.
+
+---
