@@ -269,3 +269,84 @@ Classes • Objects • Constructors • Destructors • Properties • Access M
 📝 *Bonus:* Add a static field to count total employees created.
 
 ---
+
+## 🧩 **C# OOP Practice — Set 2 (Advanced OOP & Polymorphism)**
+
+### 🧠 Concepts Covered
+
+Inheritance • Method Overloading • Method Overriding • Abstract Classes • Interfaces • Polymorphism
+
+---
+
+### ✅ **Program 16: Inheritance Basics**
+
+**Topics:** Base & Derived Classes
+**Instructions:**
+
+* Create a base class `Animal` with a method `Speak()`.
+* Create derived classes `Dog` and `Cat` that inherit from `Animal`.
+* Call `Speak()` from each object.
+
+📝 *Bonus:* Add shared properties like `Name` or `Age`.
+
+---
+
+### ✅ **Program 17: Method Overloading**
+
+**Topics:** Same method name, different parameters
+**Instructions:**
+
+* Create a `Calculator` class with multiple `Add()` methods:
+
+  * `Add(int, int)`
+  * `Add(double, double)`
+  * `Add(int, int, int)`
+* Call all variants to show overloading.
+
+📝 *Bonus:* Add an `Add(params int[] numbers)` version.
+
+---
+
+### ✅ **Program 18: Inheritance and Constructors**
+
+**Topics:** Base Constructors, `base()` keyword, Initialization Order
+
+**Instructions:**
+
+1.  Create a base class `Vehicle` with a parameterized constructor that takes `string licensePlate` and `int wheels`.
+    * Print a message inside the constructor (e.g., "Vehicle created.").
+2.  Create a derived class `Car` that inherits from `Vehicle`.
+3.  The `Car` constructor should also accept `licensePlate` and `wheels`, and a new parameter: `bool hasTrunk`.
+4.  Use the **`base()` keyword** in the `Car` constructor to pass the `licensePlate` and `wheels` to the `Vehicle` base constructor.
+    * Print a message inside the `Car` constructor (e.g., "Car created.").
+5.  In `Main()`, create a `Car` object and observe the order in which the constructor messages appear.
+
+📝 **Bonus:** Add a method `GetDescription()` to `Car` that uses a `protected` field inherited from `Vehicle` to display the plate number.
+
+---
+
+### ✅ **Program 19: Abstract Classes**
+
+**Topics:** Abstract Methods, Derived Implementations
+**Instructions:**
+
+* Create an abstract class `Shape` with an abstract method `CalculateArea()`.
+* Create `Circle` and `Rectangle` classes implementing it.
+* Use a list of shapes and call `CalculateArea()` polymorphically.
+
+📝 *Bonus:* Add a common property like `Color` in `Shape`.
+
+---
+
+### ✅ **Program 20: Interfaces & Polymorphism**
+
+**Topics:** Interfaces, Multiple Inheritance via Interfaces
+**Instructions:**
+
+* Create interfaces `IPlayable` and `IRecordable` with methods `Play()` and `Record()`.
+* Create a class `MediaPlayer` that implements both.
+* Demonstrate calling both interface methods through their references.
+
+📝 *Bonus:* Add another class `AudioRecorder` that implements only `IRecordable` and show polymorphic behavior.
+
+---
