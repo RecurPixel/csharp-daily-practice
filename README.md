@@ -350,3 +350,76 @@ Inheritance • Method Overloading • Method Overriding • Abstract Classes �
 📝 *Bonus:* Add another class `AudioRecorder` that implements only `IRecordable` and show polymorphic behavior.
 
 ---
+
+## ⚙️ **C# Exception Handling — Set 1 (Exception Handling & Collections)**
+
+### 🧱 Concepts Covered
+
+This level focuses on writing **robust** and **data-structured** C# programs.
+You’ll learn to handle runtime errors gracefully using **Exception Handling**, and master **Collections**, the backbone of algorithms and data structures.
+
+---
+
+### ✅ **Problem 21: Safe Division Calculator**
+
+**Concepts:** `try-catch`, `DivideByZeroException`, `FormatException`
+
+* Write a program that performs division of two numbers entered by the user.
+* Handle exceptions such as `DivideByZeroException` and `FormatException` using try-catch blocks.
+
+**📝 Bonus:**
+Add input validation using `TryParse` and a `finally` block to display `"Operation complete"`.
+
+---
+
+### ✅ **Problem 22: Multi-Exception Handling**
+
+**Concepts:** multiple catch blocks, `IndexOutOfRangeException`
+
+* Create a program that takes an array of numbers and divides each by a user-given divisor.
+* Handle exceptions:
+
+  * `DivideByZeroException`
+  * `IndexOutOfRangeException`
+  * `FormatException`
+
+**📝 Bonus:**
+Add a `finally` block that always prints `"Processing finished"`.
+
+---
+
+### ✅ **Problem 23: Nested Exception Handling**
+
+**Concepts:** nested try-catch, argument validation
+
+* Read an integer from the user and calculate its square root.
+* Handle negative input (`ArgumentOutOfRangeException`) and invalid format (`FormatException`).
+
+**📝 Bonus:**
+Use nested try-catch blocks to separate **user input validation** from **calculation**.
+
+---
+
+### ✅ **Problem 24: Custom Exception – Age Validation**
+
+**Concepts:** custom exception class
+
+* Create a custom exception `InvalidAgeException`.
+* Ask the user for their age and throw the exception if the age < 18.
+
+**📝 Bonus:**
+Add a property to your exception class to store and display the entered age.
+
+---
+
+### ✅ **Problem 25: Exception Handling with File I/O**
+
+**Concepts:** `FileNotFoundException`, `IOException`
+
+* Read a text file and print its contents.
+* Handle file-related exceptions gracefully.
+
+**📝 Bonus:**
+Allow the user to input the file path and **retry** if the file is not found.
+
+---
