@@ -423,3 +423,17 @@ Add a property to your exception class to store and display the entered age.
 Allow the user to input the file path and **retry** if the file is not found.
 
 ---
+
+## 📚 Set 2 – Collections (5 Problems)
+
+### ✅ **Problem 26: Array vs List Comparison**
+
+**Concepts:** `Array`, `List<int>`
+
+* Store 5 numbers using both an array and a list.
+* Show how lists allow adding/removing elements while arrays do not.
+
+**📝 Bonus:**
+Handle index out-of-range errors using exception handling.
+
+---
