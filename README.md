@@ -437,3 +437,49 @@ Allow the user to input the file path and **retry** if the file is not found.
 Handle index out-of-range errors using exception handling.
 
 ---
+
+### ✅ **Problem 27: Queue & Stack Operations**
+
+**Concepts:** `Queue<T>`, `Stack<T>`
+
+* Create a menu-driven console app that:
+
+  * Adds elements
+  * Removes elements
+  * Views elements
+* Demonstrate FIFO vs LIFO behavior.
+
+**📝 Bonus:**
+Handle invalid removal attempts with try-catch.
+
+---
+
+### ✅ **Problem 28: Dictionary Lookup**
+
+**Concepts:** `Dictionary<TKey, TValue>`, `KeyNotFoundException`
+
+* Build a dictionary of countries and capitals.
+* Allow the user to enter a country and display its capital.
+* Handle invalid keys.
+
+**📝 Bonus:**
+Allow adding new key-value pairs dynamically.
+
+---
+
+### ✅ **Problem 29: HashSet and SortedSet Practice**
+
+**Concepts:** `HashSet<T>`, `SortedSet<T>`
+
+* Create two sets of favorite numbers.
+* Demonstrate:
+
+  * Union
+  * Intersection
+  * Difference
+* Then show sorted results using `SortedSet`.
+
+**📝 Bonus:**
+Show how `HashSet` automatically prevents duplicates.
+
+---
