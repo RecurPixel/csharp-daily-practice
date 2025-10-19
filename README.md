@@ -467,6 +467,17 @@ Allow adding new key-value pairs dynamically.
 
 ---
 
+### ✅ **L3-M01: Library ledger**
+
+**Concepts:** All concepts coverd so far.
+
+* A mini project to refresh mind and alleviate information load on brain.
+* Covers almost all covered concepts.
+* No need for perfect implementation just working one is needed
+* Check L3-M01-library-ledger/README.md for more information.
+
+---
+
 ### ✅ **Problem 29: HashSet and SortedSet Practice**
 
 **Concepts:** `HashSet<T>`, `SortedSet<T>`
