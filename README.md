@@ -494,3 +494,23 @@ Allow adding new key-value pairs dynamically.
 Show how `HashSet` automatically prevents duplicates.
 
 ---
+
+## 🧭 Level 4 — Advanced C# Essentials (Problems 31–40)
+
+### 🎯 Focus
+- Enums & Structs  => done
+- File I/O (Text, Binary, Streams)  
+- Advanced Arrays & Strings  
+- Core Utilities (`DateTime`, `Math`, etc.)  
+- Integration of previous concepts  
+
+---
+
+## **Problem 31 — Enum-Based Task Manager**
+**Concepts:** Enums, Structs  
+- Define a `TaskStatus` enum → `Pending`, `InProgress`, `Completed`.  
+- Create a `Task` struct → `Id`, `Title`, `Status`.  
+- Store tasks in a `List<Task>` and print formatted output.  
+🧩 **Bonus:** Filter tasks by `Status` using simple loops.
+
+---
