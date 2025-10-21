@@ -514,3 +514,27 @@ Show how `HashSet` automatically prevents duplicates.
 🧩 **Bonus:** Filter tasks by `Status` using simple loops.
 
 ---
+
+## **Problem 32 — Temperature Converter (Struct Practice)**
+**Concepts:** Structs, Methods, Static Methods  
+- Create a `Temperature` struct that holds Celsius/Fahrenheit.  
+- Implement conversion methods: `ToFahrenheit()`, `ToCelsius()`.  
+🧩 **Bonus:** Overload operators `==`, `!=` to compare two temperatures.
+
+---
+
+## **Problem 33 — Log Writer (File I/O – Write)**
+**Concepts:** FileStream, StreamWriter, Exception Handling  
+- Ask the user for a message.  
+- Save it to `log.txt` with date and time.  
+🧩 **Bonus:** Append new entries instead of overwriting.
+
+---
+
+## **Problem 34 — Log Reader (File I/O – Read)**
+**Concepts:** StreamReader, Loops, Exception Handling  
+- Read contents of `log.txt` line-by-line and display them.  
+- Handle missing file exception gracefully.  
+🧩 **Bonus:** Count total lines (entries).
+
+---
