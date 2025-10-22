@@ -538,3 +538,18 @@ Show how `HashSet` automatically prevents duplicates.
 🧩 **Bonus:** Count total lines (entries).
 
 ---
+
+## **Problem 35 — Copy Text File**
+**Concepts:** FileStream, Byte Operations  
+- Copy contents from one file to another using `FileStream`.  
+🧩 **Bonus:** Allow copying of `.txt` and `.csv` files.
+
+---
+
+## **Problem 36 — Student Records (Struct + File I/O)**
+**Concepts:** Struct, Arrays, File Writing  
+- Define a `Student` struct → `Id`, `Name`, `Marks`.  
+- Input multiple students and save their data to a file.  
+🧩 **Bonus:** Load data and calculate average marks.
+
+---
