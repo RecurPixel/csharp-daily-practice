@@ -553,3 +553,19 @@ Show how `HashSet` automatically prevents duplicates.
 🧩 **Bonus:** Load data and calculate average marks.
 
 ---
+
+## **Problem 37 — String Analyzer**
+**Concepts:** String Functions, Char Arrays  
+- Ask user for input string.  
+- Display: total characters, words, vowels, consonants, spaces.  
+🧩 **Bonus:** Reverse string manually without built-in functions.
+
+---
+
+## **Problem 38 — Matrix Operations**
+**Concepts:** Multidimensional Arrays  
+- Input two 2D arrays.  
+- Perform addition, subtraction, multiplication.  
+🧩 **Bonus:** Validate dimensions and handle exceptions.
+
+---
