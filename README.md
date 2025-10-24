@@ -569,3 +569,12 @@ Show how `HashSet` automatically prevents duplicates.
 🧩 **Bonus:** Validate dimensions and handle exceptions.
 
 ---
+
+## **Problem 39 — Date & Time Utility**
+**Concepts:** `DateTime`, `TimeSpan`, Formatting  
+- Ask user for their birth date.  
+- Calculate and display age in years, months, and days.  
+🧩 **Bonus:** Show days until next birthday.
+
+---
+
