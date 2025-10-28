@@ -578,3 +578,12 @@ Show how `HashSet` automatically prevents duplicates.
 
 ---
 
+## **Problem 40 — File-Based To-Do List**
+**Concepts:** Enums + File I/O + Collections + Exception Handling  
+- Use `TaskStatus` enum from Problem 31.  
+- Allow adding, removing, completing tasks.  
+- Save and load tasks from a `todo.txt` file.  
+🧩 **Bonus:** Show summary grouped by task status.
+
+---
+
