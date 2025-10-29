@@ -606,3 +606,50 @@ Use `try-catch-finally` to manage errors and always print a summary after each o
 
 ---
 
+## 🧩 **Level 5 — Delegates, Events, and Lambdas**
+
+**Core Concepts:**
+Delegates, Multicast Delegates, Anonymous Methods, Events, Event Handlers, Lambda Expressions, Action / Func / Predicate delegates
+
+**Goal:**
+Learn to decouple logic using delegates and events. Use them for notifications, callbacks, and flexible function invocation.
+
+---
+
+### ✅ **Problem 41: Basic Delegate Invocation**
+
+**Concepts:** `delegate`, `method reference`, `invocation`
+
+* Define a delegate that takes two integers and returns their sum.
+* Create a static method that performs the addition.
+* Assign the method to the delegate and invoke it.
+
+**📝 Bonus:**
+Display the method name being invoked using `Delegate.Method.Name`.
+
+---
+
+### ✅ **Problem 42: Multicast Delegate Logger**
+
+**Concepts:** `multicast delegate`, `+=`, `-=`
+
+* Create a delegate `Logger` that points to multiple methods like `Info`, `Warning`, and `Error`.
+* Each method prints a log message with different formatting.
+* Demonstrate adding and removing methods dynamically.
+
+**📝 Bonus:**
+Use a timestamp (`DateTime.Now`) in the log output.
+
+---
+
+### ✅ **Problem 43: Delegate as a Parameter**
+
+**Concepts:** passing delegates, flexible callbacks
+
+* Create a function `ProcessNumbers(List<int> numbers, Delegate operation)` that applies an operation to each number.
+* Pass different delegate methods for operations like doubling, squaring, or negating.
+
+**📝 Bonus:**
+Show how to use anonymous methods instead of named methods.
+
+---
