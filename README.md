@@ -495,6 +495,25 @@ Show how `HashSet` automatically prevents duplicates.
 
 ---
 
+### ✅ **Problem 30: Mini Address Book (Integrated Practice)**
+
+**Concepts:** `Dictionary<string, List<string>>`, exception handling, integration
+
+* Create a console-based address book.
+* Key = person’s name
+* Value = list of phone numbers
+* Allow:
+
+  * Add contact
+  * Remove contact
+  * Search contact
+* Use exception handling for invalid or empty inputs.
+
+**📝 Bonus:**
+Use `try-catch-finally` to manage errors and always print a summary after each operation.
+
+---
+
 ## 🧭 Level 4 — Advanced C# Essentials (Problems 31–40)
 
 ### 🎯 Focus

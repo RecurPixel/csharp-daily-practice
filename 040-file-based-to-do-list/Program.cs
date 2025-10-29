@@ -190,7 +190,7 @@ class ToDoList
             if (loadedTasks != null)
             {
                 Tasks = loadedTasks;
-                nextTasksId = Tasks.Any() ? Tasks.Max(t => t.Id) + 1 : 10001;
+                nextTasksId = Tasks.Any() ? Tasks.Max(t => t.Id) + 1 : 1001;
                 Console.WriteLine($"Loaded {Tasks.Count} records from {SaveFile}. Next ID: {nextTasksId}");
             }
             return;
