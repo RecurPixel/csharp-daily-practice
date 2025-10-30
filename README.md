@@ -653,3 +653,98 @@ Use a timestamp (`DateTime.Now`) in the log output.
 Show how to use anonymous methods instead of named methods.
 
 ---
+
+### ✅ **Problem 44: Event-Driven Download Simulator**
+
+**Concepts:** `event`, `delegate`, `event handler pattern`
+
+* Create a `FileDownloader` class with an event `DownloadCompleted`.
+* Simulate a file download using `Thread.Sleep` or a simple loop.
+* Raise the event when the “download” finishes and display a message in the subscriber class.
+
+**📝 Bonus:**
+Add progress notifications using a second event `ProgressChanged`.
+
+---
+
+### ✅ **Problem 45: Custom Event Publisher-Subscriber**
+
+**Concepts:** `custom event`, `event keyword`, `EventArgs`
+
+* Build a simple event system for a “Stock Price Tracker.”
+* `Stock` class raises an event when the price changes.
+* `Investor` class subscribes and prints a message when notified.
+
+**📝 Bonus:**
+Include old and new price values in the event arguments.
+
+---
+
+### ✅ **Problem 46: Anonymous Methods and Inline Delegates**
+
+**Concepts:** `anonymous method`, inline delegate syntax
+
+* Write a program that filters even numbers from a list using an anonymous method.
+* Use a delegate `FilterDelegate` that takes an integer and returns a bool.
+
+**📝 Bonus:**
+Display how many numbers were filtered.
+
+---
+
+### ✅ **Problem 47: Lambda Expression Practice**
+
+**Concepts:** `lambda expressions`, `Func`, `Action`, `Predicate`
+
+* Demonstrate all three types of built-in delegates using lambdas:
+
+  * `Action<string>` → Prints a message.
+  * `Func<int, int, int>` → Returns sum of two integers.
+  * `Predicate<int>` → Checks if a number is even.
+
+**📝 Bonus:**
+Store multiple lambdas in a list and invoke them sequentially.
+
+---
+
+### ✅ **Problem 48: Sorting and Filtering with Delegates**
+
+**Concepts:** combining delegates with collections
+
+* Given a list of employee objects (Name, Age, Salary):
+
+  * Use a delegate or lambda to sort employees by salary.
+  * Use another delegate to filter employees older than 30.
+
+**📝 Bonus:**
+Use `List<T>.FindAll()` and `Comparison<T>` delegate.
+
+---
+
+### ✅ **Problem 49: Event-Based Timer**
+
+**Concepts:** `event-driven design`, `timer`, `callback`
+
+* Create a custom `Timer` class that raises an event every second.
+* The subscriber prints elapsed seconds.
+* Stop after 5 ticks.
+
+**📝 Bonus:**
+Show how to unsubscribe from the event mid-way.
+
+---
+
+### ✅ **Problem 50: Event Notification System**
+
+**Concepts:** combining multiple concepts — delegates, events, lambdas, OOP
+
+* Design a mini **Notification System**:
+
+  * `Notifier` class — raises an event `OnNotify`.
+  * `EmailService`, `SMSService`, and `PushService` subscribe to it.
+  * When a notification is triggered, all subscribers respond.
+
+**📝 Bonus:**
+Add filtering so some services only respond to certain message types (e.g., “Alert”, “Info”, “Warning”).
+
+---

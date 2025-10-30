@@ -44,6 +44,7 @@ class ToDoList
     public ToDoList()
     {
         // Load from file else create new
+        Tasks = new List<Task>();
         LoadFromFile();
     }
 
@@ -179,7 +180,6 @@ class ToDoList
             if (string.IsNullOrWhiteSpace(jsonStringFromFile) || jsonStringFromFile.Trim() == "[]")
             {
                  Console.WriteLine($"Loaded file is empty. Starting with a blank list.");
-                 Tasks = new List<Task>();
                  nextTasksId = 1001;
                  return;
             }
