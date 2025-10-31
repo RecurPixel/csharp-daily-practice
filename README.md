@@ -1418,7 +1418,7 @@ This capstone project will demonstrate mastery of all 100 problems and serve as 
 **Level 3:** ✅✅✅✅✅✅✅✅✅✅ (10/10)  
 **Level 4:** ✅✅✅✅✅✅✅✅✅✅ (10/10)  
 **Level 5:** ✅✅✅✅✅✅✅✅✅✅ (10/10)  
-**Level 6:** ☐☐☐☐☐☐☐☐☐☐ (0/10)  
+**Level 6:** ✅✅☐☐☐☐☐☐☐☐ (2/10)  
 **Level 7:** ☐☐☐☐☐☐☐☐☐☐ (0/10)  
 **Level 8:** ☐☐☐☐☐☐☐☐☐☐ (0/10)  
 **Level 9:** ☐☐☐☐☐☐☐☐☐☐ (0/10)  
