@@ -778,7 +778,7 @@
 
 ---
 
-### ✅ Problem 54: Static Utility Library
+### Problem 54: Static Utility Library
 
 **Concepts:** `Static Class`, `Static Method`, `Encapsulation`
 
@@ -793,7 +793,7 @@
 
 ---
 
-### ✅ Problem 55: Partial Class Implementation
+### Problem 55: Partial Class Implementation
 
 **Concepts:** `Partial Class`, `Code Organization`
 
@@ -831,7 +831,7 @@
 
 ---
 
-### ✅ Problem 58: Index & Range Operators
+### Problem 58: Index & Range Operators
 
 **Concepts:** `Index`, `Range`, `from end`, slicing
 
@@ -844,7 +844,7 @@
 
 ---
 
-### ✅ Problem 59: Pattern Matching in Switch
+### Problem 59: Pattern Matching in Switch
 
 **Concepts:** `Pattern Matching`, `switch`, `is`, relational patterns
 
