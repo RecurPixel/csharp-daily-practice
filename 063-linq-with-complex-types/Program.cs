@@ -11,6 +11,8 @@
 
 // 📝 **Bonus:** Format output in table-like alignment.
 
+using System.Text.RegularExpressions;
+
 class Order
 {
     public int OrderId { get; init; }
@@ -82,7 +84,7 @@ class AdvanceLINQPractice
         Console.WriteLine($"New Order Added OrderID: {oID}");
         return order;
     }
-    
+
     public static void Main()
     {
         AdvanceLINQPractice customerManager = new AdvanceLINQPractice();
@@ -109,6 +111,30 @@ class AdvanceLINQPractice
             {
                 Console.WriteLine(o.ToString());
             }
+        }
+
+        var customerWithOrderAmount = customerManager._customerRecords.Select(c => new { CustomerId = c.CustomerId, CustomerName = c.CustomerName, TotalOrderAmount = c.OrderList.Sum(o => o.OrderAmount) });
+
+        Console.WriteLine("\n---Customer Total Order Amount Records\n");
+        Console.WriteLine($"\n{"Customer ID",-15}{"Customer Name",15}{"Total Amount",30}");
+        foreach (var c in customerWithOrderAmount)
+        {
+            Console.WriteLine($"{c.CustomerId,-15} {c.CustomerName,15} {c.TotalOrderAmount,30:C}");
+        }
+
+        var HighestSpender = customerWithOrderAmount.MaxBy(c => c.TotalOrderAmount);
+        Console.WriteLine("\n---Highest Spender\n");
+        Console.WriteLine($"{"Customer ID",-15}{"Customer Name",15}{"Total Amount",30}");
+        Console.WriteLine($"{HighestSpender.CustomerId,-15} {HighestSpender.CustomerName,15} {HighestSpender.TotalOrderAmount,30:C}");
+
+
+
+        var OrderAbouveHundred = customerManager._customerRecords.SelectMany(c => c.OrderList.Where(o => o.OrderAmount > 50));
+        Console.WriteLine("\n--Orders Above 50\n");
+        Console.WriteLine($"\n{"Order ID",-15}{"Order Name",15}{"Order Amount",30}");
+        foreach (var o in OrderAbouveHundred)
+        {
+            Console.WriteLine($"{o.OrderId,-15} {o.OrderName,15} {o.OrderAmount,30:C}");
         }
 
     }
