@@ -14,54 +14,180 @@
 
 using System.Text.Json;
 using System.Text;
+using System.Text.Json.Serialization;
 
-enum JobPosition
+class Donation
 {
-    Developer, Tester, DevOps, BDE, Manager, CFO, CTO, CEO
-}
+    public int DonorId { get; init; }
+    public string? FullName { get; set; }
+    public string? Email { get; set; }
+    public double Amount { get; init; }
 
-class Employee
-{
-    private static double _baseSalary = 7500;
-    public int ID { get; init; }
-    public string? Name { get; set; }
-    public JobPosition Position { get; set; }
-    public double? Salary { get; set; }
-
-    public Employee(int id, string? name, JobPosition position, double? salary)
+    [JsonConstructor]
+    public Donation(int donorId, string? fullName, string? email, double amount)
     {
-        this.ID = id;
-        this.Name = name ?? "N/A";
-        this.Position = position;
-        this.Salary = salary ?? _baseSalary;
+        this.DonorId = donorId;
+        this.FullName = fullName ?? "Anonymous";
+        this.Email = email ?? "anon@email.com";
+        this.Amount = amount;
     }
 
     public override string ToString()
     {
-        return $"ID: {ID}, Name: {Name}, Position: {Position}, Salary: {Salary:F2}";
+        return $"{DonorId,-15}{FullName,15}{Email,30}{Amount,45:C}";
     }
 }
 
 
 class JSONCRUD
 {
-    public const string FileName = "Employee_Records.json";
+    public const string FileName = "Donation_Records.json";
+    public static int _latestDonationID = 10001;
 
-    private List<Employee> _employeeRecords;
+    private List<Donation> _donationRecords;
     public JSONCRUD()
     {
-        _employeeRecords = new List<Employee>();
-        LoadRecords();
+        _donationRecords = new List<Donation>();
     }
 
     private void LoadRecords()
     {
+        if (!File.Exists(FileName))
+        {
+            try 
+            {
+                File.WriteAllText(FileName, "[]");
+                Console.WriteLine($"\nNOTE: Created new empty records file: {FileName}");
+            }
+            catch (Exception ex)
+            {
+                 Console.WriteLine($"\nERROR: Could not create file. {ex.Message}");
+            }
+            return;
+        }
+
         try
         {
-            string fileData = File.ReadAllText(FileName, Encoding.UTF8);
-            _employeeRecords = JsonSerializer.Deserialize<List<Employee>>(fileData);
-            Console.WriteLine($"\nData Loaded from file {FileName}");
+
+            string jsonStringFromFile = File.ReadAllText(FileName);
+
+            List<Donation>? loadedRecords = null;
+
+            try
+            {
+                loadedRecords = JsonSerializer.Deserialize<List<Donation>>(jsonStringFromFile);
+            }
+            catch (JsonException)
+            {
+                Console.WriteLine($"Loaded file is empty. Starting with a blank list.");
+            }
+
+            if (loadedRecords != null)
+            {
+                _donationRecords = loadedRecords;
+                _latestDonationID = _donationRecords.Any() ? _donationRecords.Max(t => t.DonorId) + 1 : 1001;
+                Console.WriteLine($"Loaded {_donationRecords.Count} records from {FileName}. Next ID: {_latestDonationID}");
+            }
             return;
+
+        }
+        catch (IOException ex)
+        {
+            Console.WriteLine($"\nERROR loading file: {ex.Message}");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"\nERROR loading file: {ex.Message}");
+        }
+        return;
+    }
+
+    private void Add()
+    {
+        Console.Write("Enter Donor Full Name: ");
+        string? name = Console.ReadLine();
+        
+        Console.Write("Enter Donor Email: ");
+        string? email = Console.ReadLine();
+
+        Console.Write("Enter Donation Amount: ");
+        if (!double.TryParse(Console.ReadLine(), out double amount) || amount <= 0)
+        {
+            Console.WriteLine("❌ Invalid amount. Record not added.");
+            return;
+        }
+
+        _donationRecords.Add(new Donation(_latestDonationID++, name, email, amount));
+        Console.WriteLine($"\n✅ Added new record with ID: {_latestDonationID - 1}");
+    }
+
+    private void Remove()
+    {
+        Console.Write("Enter Donor ID to Remove: ");
+        if (!int.TryParse(Console.ReadLine(), out int idToRemove))
+        {
+            Console.WriteLine("❌ Invalid ID format.");
+            return;
+        }
+
+        int recordsRemoved = _donationRecords.RemoveAll(d => d.DonorId == idToRemove);
+
+        if (recordsRemoved > 0)
+        {
+            Console.WriteLine($"\n✅ Successfully removed {recordsRemoved} record(s) with ID: {idToRemove}");
+        }
+        else
+        {
+            Console.WriteLine($"\nℹ️ No record found with ID: {idToRemove}");
+        }
+    }
+
+    private void Update()
+    {
+        Console.Write("Enter Donor ID to Update: ");
+        if (!int.TryParse(Console.ReadLine(), out int idToUpdate))
+        {
+            Console.WriteLine("❌ Invalid ID format.");
+            return;
+        }
+
+        Donation? recordToUpdate = _donationRecords.FirstOrDefault(d => d.DonorId == idToUpdate);
+
+        if (recordToUpdate == null)
+        {
+            Console.WriteLine($"\nℹ️ No record found with ID: {idToUpdate}");
+            return;
+        }
+
+        Console.WriteLine($"\nRecord Found: {recordToUpdate.FullName} ({recordToUpdate.Email})");
+        Console.WriteLine("Enter new details (leave blank to keep current value):");
+
+        Console.Write($"New Full Name (Current: {recordToUpdate.FullName}): ");
+        string? newName = Console.ReadLine();
+        if (!string.IsNullOrWhiteSpace(newName))
+        {
+            recordToUpdate.FullName = newName;
+        }
+
+        Console.Write($"New Email (Current: {recordToUpdate.Email}): ");
+        string? newEmail = Console.ReadLine();
+        if (!string.IsNullOrWhiteSpace(newEmail))
+        {
+            recordToUpdate.Email = newEmail;
+        }
+
+        Console.WriteLine($"\n✅ Record ID {idToUpdate} updated successfully.");
+    }
+
+    private void Save()
+    {
+        try
+        {
+            string donationString = JsonSerializer.Serialize(_donationRecords, new JsonSerializerOptions { WriteIndented = true });
+
+            File.WriteAllText(FileName, donationString, Encoding.UTF8);
+
+            Console.WriteLine($"File `{FileName}` is Saved latest Data.");
         }
         catch (FileNotFoundException ex)
         {
@@ -77,36 +203,22 @@ class JSONCRUD
         }
     }
 
-    private void Add()
+    private void Show()
     {
-        string name;
-        string contact;
-
-        Console.Write("\nEnter Name: ");
-        while (String.IsNullOrWhiteSpace(name = Console.ReadLine()))
+        Console.WriteLine("\n---Updated Records---");
+        Console.WriteLine($"{"Donation Id",-15}{"Donor Name",15}{"Donor Email",30}{"Donation Amount",45}");
+        foreach (var d in _donationRecords)
         {
-            Console.Write("Invalid Name. Try Agrain: ");
+            Console.WriteLine(d);
         }
-    }
-
-    private void Remove()
-    {
-
-    }
-    private void Update()
-    {
-
-    }
-    
-    private void Save()
-    {
-        
+        return;
     }
 
 
     public static void Main()
     {
         JSONCRUD handler = new JSONCRUD();
+        handler.LoadRecords();
 
         bool keepAlive = true;
 
@@ -115,31 +227,38 @@ class JSONCRUD
 
             try
             {
-                Console.WriteLine("\n---Employee Menu---\n");
+                Console.WriteLine("\n---Donation Menu---\n");
                 Console.WriteLine(" > Add: 1");
                 Console.WriteLine(" > Remove: 2");
                 Console.WriteLine(" > Update: 3");
+                Console.WriteLine(" > Show: 4");
                 Console.WriteLine(" > Save and Exit: 0");
 
-                if(!int.TryParse(Console.ReadLine(), out var input))
+                if (!int.TryParse(Console.ReadLine(), out var input))
                 {
                     Console.WriteLine("Invalid Input! Try Again.");
                     continue;
                 }
-                switch(input)
+                switch (input)
                 {
-                    case 1: 
+                    case 1:
                         handler.Add();
                         break;
-                    case 2: 
+                    case 2:
                         handler.Remove();
                         break;
-                    case 3: 
+                    case 3:
                         handler.Update();
+                        break;
+                    case 4:
+                        handler.Show();
                         break;
                     case 0:
                         handler.Save();
                         keepAlive = false;
+                        break;
+                    default:
+                        Console.WriteLine("❌ Invalid choice! Please select 0, 1, 2, 3 or 4.");
                         break;
                 }
 
