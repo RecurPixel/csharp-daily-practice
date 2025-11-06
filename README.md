@@ -970,7 +970,7 @@
 
 ---
 
-### ✅ Problem 68: Regex Data Extractor
+### Problem 68: Regex Data Extractor
 
 **Concepts:** `Regex.Match`, `Groups`, `Named Captures`
 
@@ -982,7 +982,7 @@
 
 ---
 
-### ✅ Problem 69: LINQ + JSON Mini Report
+### Problem 69: LINQ + JSON Mini Report
 
 **Concepts:** Combining LINQ + JSON
 
