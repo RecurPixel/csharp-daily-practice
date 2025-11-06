@@ -25,14 +25,14 @@ struct Person
     public Person(int ID, string? Name, string? Email, int? Age)
     {
         this.ID = ID;
-        this.Name = Name ?? "N/A";
-        this.Email = Email ?? "N/A";
+        this.Name = Name;
+        this.Email = Email;
         this.Age = Age ?? 0;
     }
 
     public override string ToString()
     {
-        return $"{ID,-15}{Name,15}{Email,30},{Age,45}";
+        return $"{ID,-15}{Name,15}{Email ?? "N/A",30},{Age,45}";
     }
 
 }
@@ -41,6 +41,7 @@ struct Person
 class DataExtractor
 {
     private string _matchPattern, _inputFile;
+    private int _nextID = 10001;
     private List<Person> _people;
 
     public DataExtractor(string pattern, string inputFile)
@@ -50,6 +51,62 @@ class DataExtractor
         _people = new List<Person>();
     }
 
+    private void ProcessWithTwoPassPattern(string data, string pattern)
+    {
+        var matches = Regex.Matches(data, pattern, RegexOptions.Singleline);
+
+        Console.WriteLine($"Found {matches.Count} records:\n");
+
+        foreach (Match match in matches)
+        {
+            string name = match.Groups["Name"].Value.Trim();
+            string block = match.Groups["Block"].Value;
+
+            // Second pass: Extract email and age from the block
+            string emailPattern = @"([a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,})";
+            string agePattern = @"(?:Age[:\s]+(\d{1,3})|\b(\d{2})\b(?!\d))";
+
+            var emailMatch = Regex.Match(block, emailPattern);
+            var ageMatches = Regex.Matches(block, agePattern);
+
+            string? email = emailMatch.Success ? emailMatch.Groups[1].Value : null;
+
+            // Get the last age match (more reliable for this format)
+            int age = 0;
+            if (ageMatches.Count > 0)
+            {
+                // Try to find age with "Age:" prefix first
+                foreach (Match am in ageMatches)
+                {
+                    if (am.Groups[1].Success)
+                    {
+                        age = int.Parse(am.Groups[1].Value);
+                        break;
+                    }
+                }
+                // If not found, use standalone number
+                if (age == 0)
+                {
+                    foreach (Match am in ageMatches)
+                    {
+                        if (am.Groups[2].Success)
+                        {
+                            age = int.Parse(am.Groups[2].Value);
+                        }
+                    }
+                }
+            }
+
+            _people.Add(new Person(_nextID++, name, email, age));
+
+            // Console.WriteLine($"ID: {_nextID - 1}");
+            // Console.WriteLine($"Name:  {name}");
+            // Console.WriteLine($"Email: {email}");
+            // Console.WriteLine($"Age:   {age}");
+            // Console.WriteLine(new string('-', 50));
+        }
+    }
+    
     private void ExtractFromFile()
     {
         if (!File.Exists(_inputFile))
@@ -61,44 +118,8 @@ class DataExtractor
         {
             string jsonStringFromFile = File.ReadAllText(_inputFile);
 
-                    string pattern = @"
-        (?xsi)
-        (?<Record>
-            (?<Name>
-                (?:
-                    \*\*(?<InnerName>[^*]+?)\*\*       # **Name**
-                    |
-                    ['""](?<InnerNameQ>[^'""]+?)['""] 
-                )
-            )
-            (?<Details>
-                (?:
-                    (?!\*\*|['""])                     # Stop before next name marker
-                    .
-                )*?
-            )
-        )";
-
-        Regex regex = new Regex(pattern, RegexOptions.IgnoreCase | RegexOptions.Singleline | RegexOptions.IgnorePatternWhitespace);
-
-        Regex emailRegex = new Regex(@"[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}", RegexOptions.IgnoreCase);
-        Regex ageRegex = new Regex(@"(?:(?:Age\s*(?:is)?|He is|She is|Her Age is)\s*(?<Age>\d{1,2}))", RegexOptions.IgnoreCase);
-
-            foreach (Match m in regex.Matches(jsonStringFromFile))
-            {
-                string name = m.Groups["InnerName"].Success ? m.Groups["InnerName"].Value : m.Groups["InnerNameQ"].Value;
-                string details = m.Groups["Details"].Value;
-
-                string email = emailRegex.Match(details).Value;
-                string age = ageRegex.Match(details).Groups["Age"].Value;
-
-                Console.WriteLine("--------");
-                Console.WriteLine($"Name: {name}");
-                if (!string.IsNullOrEmpty(email))
-                    Console.WriteLine($"Email: {email}");
-                if (!string.IsNullOrEmpty(age))
-                    Console.WriteLine($"Age: {age}");
-            }
+            string pattern = @"\*\*(?<Name>[^*]+)\*\*(?<Block>.*?)(?=Record\s+\d+|--- END|$)";
+            ProcessWithTwoPassPattern(jsonStringFromFile, pattern);
         }
         catch (IOException ex)
         {
@@ -124,7 +145,18 @@ class DataExtractor
 
         DataExtractor dataExtractor = new DataExtractor(pattern, fileName);
         dataExtractor.ExtractFromFile();
-        // dataExtractor.ToJson();
+
+        Console.WriteLine("\nPeople with All Date:");
+
+        var completeRecords = dataExtractor._people.Where(p => p.Age > 0 && !String.IsNullOrEmpty(p.Email));
+
+        foreach (var r in completeRecords)
+        {
+            Console.WriteLine(r);
+        }
+
+        Console.WriteLine("\nSerialized String: ");
+        Console.WriteLine(dataExtractor.ToJson());
 
     }
 }
