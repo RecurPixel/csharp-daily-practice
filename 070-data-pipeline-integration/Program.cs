@@ -38,8 +38,37 @@ struct Person
 }
 
 
+
+class DataPipeline
+{
+    private static DataExtractor _dataExtractor;
+    public static void Manager_ExtractionComplete(object sender, EventArgs e)
+    {
+        _dataExtractor.ShowCompleteRecords();
+
+        Console.WriteLine(_dataExtractor.ToJson());
+
+        Console.WriteLine("\nExtraction Complete.");
+    }
+
+    public static void Main()
+    {
+        string fileName = "./data-unstructured-sample.txt";
+        string pattern = @"Record\s\d+\.*(\*\*\w\s\w\*\*)";
+
+        _dataExtractor = new DataExtractor(pattern, fileName);
+        _dataExtractor.ExtractionComplte += Manager_ExtractionComplete;
+
+        _dataExtractor.ExtractFromFile();
+
+    }
+}
+
 class DataExtractor
 {
+
+    public event EventHandler ExtractionComplte;
+
     private string _matchPattern, _inputFile;
     private int _nextID = 10001;
     private List<Person> _people;
@@ -106,8 +135,8 @@ class DataExtractor
             // Console.WriteLine(new string('-', 50));
         }
     }
-    
-    private void ExtractFromFile()
+
+    internal void ExtractFromFile()
     {
         if (!File.Exists(_inputFile))
         {
@@ -129,34 +158,30 @@ class DataExtractor
         {
             Console.WriteLine($"\nERROR loading file: {ex.Message}");
         }
-        return;
+
+        Thread.Sleep(5000); // Simulate Processing Time;
+        OnExtractionComplete();
     }
 
-    private string ToJson()
+    internal string ToJson()
     {
         string jsonString = JsonSerializer.Serialize(_people, new JsonSerializerOptions { WriteIndented = true });
         return jsonString;
     }
 
-    public static void Main()
+    internal void ShowCompleteRecords()
     {
-        string fileName = "./data-unstructured-sample.txt";
-        string pattern = @"Record\s\d+\.*(\*\*\w\s\w\*\*)";
-
-        DataExtractor dataExtractor = new DataExtractor(pattern, fileName);
-        dataExtractor.ExtractFromFile();
+        var completeRecords = _people.Where(p => p.Age > 0 && !String.IsNullOrEmpty(p.Email));
 
         Console.WriteLine("\nPeople with All Date:");
-
-        var completeRecords = dataExtractor._people.Where(p => p.Age > 0 && !String.IsNullOrEmpty(p.Email));
-
         foreach (var r in completeRecords)
         {
             Console.WriteLine(r);
         }
+    }
 
-        Console.WriteLine("\nSerialized String: ");
-        Console.WriteLine(dataExtractor.ToJson());
-
+    protected virtual void OnExtractionComplete()
+    {
+        ExtractionComplte?.Invoke(this, EventArgs.Empty);
     }
 }
