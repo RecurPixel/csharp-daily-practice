@@ -1041,7 +1041,7 @@
 
 ---
 
-### ✅ Problem 73: ThreadPool Example
+### Problem 73: ThreadPool Example
 
 **Concepts:** `ThreadPool.QueueUserWorkItem`
 
