@@ -1101,7 +1101,7 @@
 
 ---
 
-### ✅ Problem 78: Producer–Consumer Problem
+### Problem 78: Producer–Consumer Problem
 
 **Concepts:** `BlockingCollection`, concurrency coordination
 
