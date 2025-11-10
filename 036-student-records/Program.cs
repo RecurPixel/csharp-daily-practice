@@ -4,6 +4,9 @@
 // 🧩 **Bonus:** Load data and calculate average marks.
 
 using System.Text.Json;
+
+namespace StudentRecord;
+
 struct Student
 {
     public int Id { get; init; }

@@ -1167,7 +1167,7 @@
 
 ---
 
-### ✅ Problem 83: Type Validator Using Reflection
+### Problem 83: Type Validator Using Reflection
 
 **Concepts:** `Reflection`, `Custom Exceptions`, `Validation`
 
@@ -1179,7 +1179,7 @@
 
 ---
 
-### ✅ Problem 84: Basic Unit Testing Simulation
+### Problem 84: Basic Unit Testing Simulation
 
 **Concepts:** `Unit Testing`, `Assertions`, `Encapsulation`
 
@@ -1191,7 +1191,7 @@
 
 ---
 
-### ✅ Problem 85: Metadata Logger
+### Problem 85: Metadata Logger
 
 **Concepts:** `Attributes`, `File I/O`, `Reflection`
 
