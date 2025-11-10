@@ -121,5 +121,5 @@ class TaskPractice
 
 
 
-// Note: As The functions. Fibonaci, Fatorial, isprime is generally example of CPI bound operation. But Task.Delay patern as async await is used to for IO operation.
+// Note: As The functions. Fibonaci, Fatorial, IsPrime are generally example of CPU bound operation. But Task.Delay patern as async await is used to for IO operation.
 // Currently we are not concerned about what to use where but about possiblity itself. so no worries in due time we will understand.

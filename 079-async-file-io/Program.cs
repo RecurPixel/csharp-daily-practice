@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 class AysncFileIO
 {
-    private const string InputFileName = "input.txt";
+    private const string InputFileName = "README.md";
     private const string OutFileName = "output.txt";
 
     public static async Task Main()
@@ -22,6 +22,9 @@ class AysncFileIO
 
         Task<bool> isComplete = ProcessFileAsync(progressHandler);
 
+
+        // Note: Here we are not geting value from await. if we do await will unwrap it and provide returned value.
+        // We can get return value from awit and check it directly or. like we have done we can simply check isComplete.Result which is task wraped value.
         await isComplete;
 
         if (isComplete.Result)
