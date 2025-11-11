@@ -68,6 +68,15 @@ class CustomAttributePractice
                                     .Cast<Developer>()                             // 2. Cast them to the Developer type
                                     .Any(d => d.Name == specificAuthor));          // 3. Check if any has the specific author's name
 
+
+
+        // Note: 
+        // Get all types(class/interface/property/method/etc)
+        // chekc if it has required attribute using Attribute.IsDefined(t, type(Dev))
+        // if you want type with with specific attribute data. simple get all attributes on that type, First caste it as now it is considered of type object. then Run LINQ query or something.
+        // the confusion steams from thinking. When you say attribute you internally think of properties/fields but here Attribute is a class that is attached to the specific type and we are get trying to related data from it.
+        
+
         PrintClassAndAttributre(classesWithDevInfo, "All Classes with Developer Attributes");
 
         PrintClassAndAttributre(classesBySpecificAuthor, $"All clases by specific Author: {specificAuthor}");
